@@ -1,0 +1,3 @@
+(:objects A B C)
+(:INIT (CLEAR C) (CLEAR A) (ONTABLE C) (ONTABLE B) (ON A B) (HANDEMPTY))
+(:goal (AND (ON A C) (ON B A))))
