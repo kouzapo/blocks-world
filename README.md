@@ -1,7 +1,7 @@
 # blocks-world
 The Blocks World problem implemented and sovled with Python
 
-Usage: python bw.py <method> <input filename> <output filename>
+Usage: python bw.py '<method>' <input filename> <output filename>
 
 ## Methods:
 - Breadth First Search Algorith (breadth)
