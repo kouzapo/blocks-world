@@ -64,3 +64,5 @@ def write_output_file(solution, filename):
 
             f.write(str(i) + '. Move(' + move[0] + ', ' + move[1] + ', ' + move[2] + ')\n')
             i += 1
+    
+    return len(path[1:])
