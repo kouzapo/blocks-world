@@ -4,5 +4,6 @@ The Blocks World problem implemented and sovled with Python
 Usage: python bw.py < method > < input filename > < output filename >
 
 ## Methods:
-- Breadth First Search Algorith (breadth)
-- Depth First Search Algorith (depth)
+- Breadth First Search Algorithm (breadth)
+- Depth First Search Algorithm (depth)
+- Best First Search Algorithm (best)
