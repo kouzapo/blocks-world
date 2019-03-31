@@ -1,5 +1,5 @@
 # blocks-world
-The Blocks World problem implemented and sovled with Python
+The Blocks World AI problem implemented and sovled with Python
 
 Usage: python bw.py < method > < input filename > < output filename >
 
