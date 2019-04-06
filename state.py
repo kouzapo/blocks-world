@@ -1,16 +1,26 @@
 from copy import deepcopy
+from hashlib import md5
 
 class State:
-    def __init__(self, layout, parent = None, move = []):
+    def __init__(self, layout, parent = None, move = [], distance = 0):
         self.layout = layout
         self.parent = parent
         self.move = move
+        self.distance = distance
+
+        values = list(self.layout.values())
+        H = ''.join([str(i) for s in values for i in s])
+
+        self.id = int(md5(H.encode()).hexdigest()[:7], 16)
     
     def __eq__(self, other_state):
         if other_state != None:
             return self.layout == other_state.layout
         else:
             return False
+    
+    def __hash__(self):
+        return self.id
 
     def calcChildren(self):
         layout = self.layout
@@ -23,6 +33,7 @@ class State:
                 if moving_block != target_block:
                     temp = deepcopy(layout)
                     move = []
+                    distance = 0
 
                     released_block = temp[moving_block][0]
 
@@ -39,11 +50,14 @@ class State:
                         move.append('table')
                     
                     move.append(target_block)
-                    children.append(State(layout = temp, parent = self, move = move))
+                    distance = self.distance + 1
+
+                    children.append(State(layout = temp, parent = self, move = move, distance = distance))
             
             if layout[moving_block][0] != '-':
                 temp = deepcopy(layout)
                 move = []
+                distance = 0
 
                 released_block = temp[moving_block][0]
 
@@ -54,6 +68,8 @@ class State:
                 move.append(released_block)
                 move.append('table')
 
-                children.append(State(layout = temp, parent = self, move = move))
+                distance = self.distance + 1
+
+                children.append(State(layout = temp, parent = self, move = move, distance = distance))
         
         return children

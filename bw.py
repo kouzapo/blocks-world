@@ -1,8 +1,9 @@
 import time
 import sys
+import os
 
 from state import State
-from searching import breadth_first_search, depth_first_search, best_first_search
+from searching import breadth_first_search, depth_first_search, heuristic_search
 from utilities import read_input_file, write_output_file
 
 def main():
@@ -20,7 +21,9 @@ def main():
         elif method == 'depth':
             solution = depth_first_search(current_state = initial_state, goal_state = goal_state)
         elif method == 'best':
-            solution = best_first_search(current_state = initial_state, goal_state = goal_state)
+            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'best')
+        elif method == 'astar':
+            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'astar')
         else:
             solution = None
             print('Usage: python bw.py <method> <input filename> <output filename>')
@@ -33,7 +36,6 @@ def main():
             print('Method:', method)
             print('Number of moves:', number_of_moves)
             print('Execution time:', str(round(time.perf_counter() - st, 4)))
-            
     else:
         print('Usage: python bw.py <method> <input filename> <output filename>')
 
