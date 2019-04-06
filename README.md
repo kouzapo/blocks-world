@@ -7,3 +7,4 @@ Usage: python bw.py < method > < input filename > < output filename >
 - Breadth First Search Algorithm (breadth)
 - Depth First Search Algorithm (depth)
 - Best First Search Algorithm (best)
+- A* Search Algorithm (astar)
