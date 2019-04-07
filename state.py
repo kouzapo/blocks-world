@@ -9,18 +9,14 @@ class State:
         self.distance = distance
 
         values = list(self.layout.values())
-        H = ''.join([str(i) for s in values for i in s])
 
-        self.id = int(md5(H.encode()).hexdigest()[:7], 16)
+        self.id = ''.join([str(i) for s in values for i in s])
     
     def __eq__(self, other_state):
         if other_state != None:
             return self.layout == other_state.layout
         else:
             return False
-    
-    def __hash__(self):
-        return self.id
 
     def calcChildren(self):
         layout = self.layout

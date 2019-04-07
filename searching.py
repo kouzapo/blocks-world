@@ -38,7 +38,7 @@ def breadth_first_search(current_state, goal_state):
     #discovered = []
 
     Q.append(current_state)
-    discovered.add(current_state)
+    discovered.add(current_state.id)
     #discovered.append(current_state)
 
     st = time.perf_counter()
@@ -56,8 +56,8 @@ def breadth_first_search(current_state, goal_state):
         children = state.calcChildren()
 
         for child in children:
-            if child not in discovered:
-                discovered.add(child)
+            if child.id not in discovered:
+                discovered.add(child.id)
                 #discovered.append(child)
                 child.parent = state
 
@@ -82,14 +82,14 @@ def depth_first_search(current_state, goal_state):
         if state == goal_state:
             return state
         
-        if state not in discovered:
-            discovered.add(state)
+        if state.id not in discovered:
+            discovered.add(state.id)
             #discovered.append(state)
 
             children = state.calcChildren()
 
             for child in children:
-                if child not in discovered:
+                if child.id not in discovered:
                     S.append(child)
 
 def heuristic_search(current_state, goal_state, method):
@@ -105,7 +105,7 @@ def heuristic_search(current_state, goal_state, method):
 
     F.append(current_state)
     #discovered.append(current_state)
-    discovered.add(current_state)
+    discovered.add(current_state.id)
 
     st = time.perf_counter()
 
@@ -123,9 +123,9 @@ def heuristic_search(current_state, goal_state, method):
         children = state.calcChildren()
 
         for child in children:
-            if child not in discovered:
+            if child.id not in discovered:
                 #discovered.append(child)
-                discovered.add(child)
+                discovered.add(child.id)
                 child.parent = state
 
                 F.append(child)
