@@ -14,7 +14,7 @@ class State:
     
     def __eq__(self, other_state):
         if other_state != None:
-            return self.layout == other_state.layout
+            return self.id == other_state.id
         else:
             return False
 

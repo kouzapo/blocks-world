@@ -82,15 +82,16 @@ def depth_first_search(current_state, goal_state):
         if state == goal_state:
             return state
         
-        if state.id not in discovered:
-            discovered.add(state.id)
+        if state.id in discovered:
+            continue
             #discovered.append(state)
 
-            children = state.calcChildren()
+        children = state.calcChildren()
 
-            for child in children:
-                if child.id not in discovered:
-                    S.append(child)
+        for child in children:
+            S.append(child)
+
+        discovered.add(state.id)
 
 def heuristic_search(current_state, goal_state, method):
     if method == 'best':
