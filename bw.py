@@ -21,7 +21,7 @@ def main():
         elif method == 'depth':
             solution = depth_first_search(current_state = initial_state, goal_state = goal_state)
         elif method == 'best':
-            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'best')
+            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'best', timeout = 3000)
         elif method == 'astar':
             solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'astar')
         else:

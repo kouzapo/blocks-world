@@ -31,20 +31,17 @@ def __astar_heuristic(F, goal_layout, blocks_keys):
     
     return scores.index(min(scores))
 
-
-def breadth_first_search(current_state, goal_state):
+def breadth_first_search(current_state, goal_state, timeout = 60):
     Q = deque([])
     discovered = set()
-    #discovered = []
 
     Q.append(current_state)
     discovered.add(current_state.id)
-    #discovered.append(current_state)
 
     st = time.perf_counter()
 
     while Q:
-        if time.perf_counter() - st > 60:
+        if time.perf_counter() - st > timeout:
             print('Timeout!')
             return None
 
@@ -58,22 +55,20 @@ def breadth_first_search(current_state, goal_state):
         for child in children:
             if child.id not in discovered:
                 discovered.add(child.id)
-                #discovered.append(child)
                 child.parent = state
 
                 Q.append(child)
 
-def depth_first_search(current_state, goal_state):
+def depth_first_search(current_state, goal_state, timeout = 60):
     S = []
     discovered = set()
-    #discovered = []
 
     S.append(current_state)
 
     st = time.perf_counter()
 
     while S:
-        if time.perf_counter() - st > 60:
+        if time.perf_counter() - st > timeout:
             print('Timeout!')
             return None
 
@@ -81,19 +76,18 @@ def depth_first_search(current_state, goal_state):
 
         if state == goal_state:
             return state
-        
-        if state.id in discovered:
-            continue
-            #discovered.append(state)
 
+        if state.id in discovered:
+        	continue
+            #discovered.append(state)
         children = state.calcChildren()
 
         for child in children:
-            S.append(child)
+        	S.append(child)
 
         discovered.add(state.id)
 
-def heuristic_search(current_state, goal_state, method):
+def heuristic_search(current_state, goal_state, method, timeout = 60):
     if method == 'best':
         heuristic_function = __out_of_place_heuristic
     elif method == 'astar':
@@ -101,17 +95,15 @@ def heuristic_search(current_state, goal_state, method):
 
     F = []
     discovered = set()
-    #discovered = []
     blocks_keys = list(current_state.layout.keys())
 
     F.append(current_state)
-    #discovered.append(current_state)
     discovered.add(current_state.id)
 
     st = time.perf_counter()
 
     while F:
-        if time.perf_counter() - st > 60:
+        if time.perf_counter() - st > timeout:
             print('Timeout!')
             return None
 
@@ -125,7 +117,6 @@ def heuristic_search(current_state, goal_state, method):
 
         for child in children:
             if child.id not in discovered:
-                #discovered.append(child)
                 discovered.add(child.id)
                 child.parent = state
 
