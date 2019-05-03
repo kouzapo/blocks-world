@@ -1,5 +1,9 @@
 from state import State
 
+"""
+This module contains two utility functions for reading and writing files.
+"""
+
 def read_input_file(filename):
     with open('problems/' + filename) as f:
         lines = [line.split() for line in f]
@@ -7,9 +11,9 @@ def read_input_file(filename):
         blocks_names = lines[0][1:]
         blocks_names[-1] = blocks_names[-1][:-1]
 
-        init = lines[1][1:-1]
-        init = [i.replace('(', '') for i in init]
-        init = [i.replace(')', '') for i in init]
+        initial = lines[1][1:-1]
+        initial = [i.replace('(', '') for i in initial]
+        initial = [i.replace(')', '') for i in initial]
 
         goal = lines[2][2:]
         goal = [i.replace('(', '') for i in goal]
@@ -18,16 +22,16 @@ def read_input_file(filename):
         initial_layout = {key: ['-', 'c'] for key in blocks_names}
         goal_layout = {key: ['-', 'c'] for key in blocks_names}
 
-        for i in range(len(init)):
-            if init[i] == 'CLEAR':
-                initial_layout[init[i + 1]][1] = 'c'
+        for i in range(len(initial)):
+            if initial[i] == 'CLEAR':
+                initial_layout[initial[i + 1]][1] = 'c'
 
-            elif init[i] == 'ONTABLE':
-                initial_layout[init[i + 1]][0] = '-'
+            elif initial[i] == 'ONTABLE':
+                initial_layout[initial[i + 1]][0] = '-'
             
-            elif init[i] == 'ON':
-                initial_layout[init[i + 1]][0] = init[i + 2]
-                initial_layout[init[i + 2]][1] = 'u'
+            elif initial[i] == 'ON':
+                initial_layout[initial[i + 1]][0] = initial[i + 2]
+                initial_layout[initial[i + 2]][1] = 'u'
         
         for i in range(len(goal)):
             if goal[i] == 'CLEAR':
