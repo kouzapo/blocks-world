@@ -50,9 +50,9 @@ def __astar_heuristic(F, goal_layout, blocks_keys):
 
     The function is a variation of the __out_of_place_heuristic function,
     with the addition of the distance attribute in the calculation of the scores.
-    It counts how many blocks are not in the final position and adds the total numbers
+    It counts how many blocks are not in the final position and adds the total number
     of steps from the root. So between two states with equal out of place blocks,
-    heuristic function chooses the one with the smallest distance from the root.
+    the heuristic function chooses the one with the smallest distance from the root.
     """
     scores = []     #A list object containing the score of each state.
 
