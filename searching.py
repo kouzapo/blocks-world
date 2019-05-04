@@ -133,7 +133,7 @@ def depth_first_search(current_state, goal_state, timeout = 60):
 
         if state.id in discovered:     #If the state has been discovered, do nothing.
         	continue
-            #discovered.append(state)
+
         children = state.calcChildren()     #Else, calculate the children of this state.
 
         for child in children:     #For each child...

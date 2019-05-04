@@ -23,24 +23,24 @@ def read_input_file(filename):
         goal_layout = {key: ['-', 'c'] for key in blocks_names}
 
         for i in range(len(initial)):
-            if initial[i] == 'CLEAR':
+            '''if initial[i] == 'CLEAR':
                 initial_layout[initial[i + 1]][1] = 'c'
 
             elif initial[i] == 'ONTABLE':
-                initial_layout[initial[i + 1]][0] = '-'
+                initial_layout[initial[i + 1]][0] = '-'''
             
-            elif initial[i] == 'ON':
+            if initial[i] == 'ON':
                 initial_layout[initial[i + 1]][0] = initial[i + 2]
                 initial_layout[initial[i + 2]][1] = 'u'
         
         for i in range(len(goal)):
-            if goal[i] == 'CLEAR':
+            '''if goal[i] == 'CLEAR':
                 goal_layout[goal[i + 1]][1] = 'c'
 
             elif goal[i] == 'ONTABLE':
-                goal_layout[goal[i + 1]][0] = '-'
+                goal_layout[goal[i + 1]][0] = '-'''
             
-            elif goal[i] == 'ON':
+            if goal[i] == 'ON':
                 goal_layout[goal[i + 1]][0] = goal[i + 2]
                 goal_layout[goal[i + 2]][1] = 'u'
 
