@@ -8,7 +8,7 @@ class State:
 
         layout: 
         A dict structure with keys the names of the blocks and values a list with two items.
-        The first item is a character on which the block stands on. If the blocks is on the table,
+        The first item is the name of a block on which the block stands on. If the blocks is on the table,
         the '-' character represents this possibility. The second item is a character 
         indicating whether or not the block if free to move. 'c' for clear, 'u' for unclear.
 
@@ -21,7 +21,7 @@ class State:
 
         parent: 
         A State object indicating the parent of the current state. Basically, it is a pointer
-        to another state object. The initial state hash parent = None.
+        to another state object. The initial state has parent = None.
 
         move:
         A list with 3 items which represents the move from which the current state is created.
@@ -105,7 +105,7 @@ class State:
 
                     move.append(moving_block)     #Add the 'moving_block' to 'move' list. 
 
-                    if released_block != '-':     #If the 'released_block" is not '-' i.e. is not the table...
+                    if released_block != '-':     #If the 'released_block" is not '-' i.e. is not on the table...
                         temp[released_block][1] = 'c'     #Set the block clear.
 
                         move.append(released_block)     #Add the 'released_block' to 'move' list.
