@@ -31,7 +31,7 @@ def main():
         elif method == 'best':
             solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'best', timeout = 3000)
         elif method == 'astar':
-            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'astar')
+            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'astar', timeout = 3000)
         else:     #If the method argument is none of the above, print a usage message.
             solution = None
             print('Usage: python bw.py <method> <input filename> <output filename>')

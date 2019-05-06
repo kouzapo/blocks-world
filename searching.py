@@ -91,7 +91,7 @@ def breadth_first_search(current_state, goal_state, timeout = 60):
             print('Timeout!')
             return None     #Break.
 
-        state = Q.popleft()     #Dequeue an element from the left of the Q.
+        state = Q.popleft()     #Dequeue an element from the left of Q.
 
         if state == goal_state:     #If the state is the goal state, return it and break.
             return state
@@ -126,7 +126,7 @@ def depth_first_search(current_state, goal_state, timeout = 60):
             print('Timeout!')
             return None      #Break.
 
-        state = S.pop()     #Pop an element from the left of the S.
+        state = S.pop()     #Pop an element from the top of S.
 
         if state == goal_state:     #If the state is the goal state, return it and break.
             return state
