@@ -25,13 +25,13 @@ def main():
         initial_state, goal_state = read_input_file(filename = input_file)     #Read the input file and return two state objects.
 
         if method == 'breadth':     #Check which method is selected and solve the problem accordingly.
-            solution = breadth_first_search(current_state = initial_state, goal_state = goal_state)
+            solution = breadth_first_search(current_state = initial_state, goal_state = goal_state, timeout = 300)
         elif method == 'depth':
-            solution = depth_first_search(current_state = initial_state, goal_state = goal_state)
+            solution = depth_first_search(current_state = initial_state, goal_state = goal_state, timeout = 300)
         elif method == 'best':
-            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'best', timeout = 3000)
+            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'best', timeout = 300)
         elif method == 'astar':
-            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'astar', timeout = 3000)
+            solution = heuristic_search(current_state = initial_state, goal_state = goal_state, method = 'astar', timeout = 300)
         else:     #If the method argument is none of the above, print a usage message.
             solution = None
             print('Usage: python bw.py <method> <input filename> <output filename>')

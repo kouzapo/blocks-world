@@ -63,7 +63,7 @@ class State:
     
     def __eq__(self, other_state):
         """
-        Override the build in __eq__ method. Two states are equal if and only if they have
+        Override the build-in __eq__ method. Two states are equal if and only if they have
         the same id.
         """
         if other_state != None:
@@ -84,7 +84,6 @@ class State:
                         |B|
         |A|             |A|
         |B|C|, |A|B|C|, |C|.
-
         """
         layout = self.layout
         children = []
@@ -103,7 +102,7 @@ class State:
                     temp[moving_block][0] = target_block     #The 'moving block' now is on top of the 'target_block'.
                     temp[target_block][1] = 'u'     #And the 'target_block' is now unclear.
 
-                    move.append(moving_block)     #Add the 'moving_block' to 'move' list. 
+                    move.append(moving_block)     #Add the 'moving_block' to 'move' list.
 
                     if released_block != '-':     #If the 'released_block" is not '-' i.e. is not on the table...
                         temp[released_block][1] = 'c'     #Set the block clear.
@@ -122,17 +121,17 @@ class State:
                 move = []
                 distance = 0
 
-                released_block = temp[moving_block][0]
+                released_block = temp[moving_block][0]     #The 'released_block' is the first item of the list in layout with key == moving_block.
 
                 temp[moving_block][0] = '-'
-                temp[released_block][1] = 'c'
+                temp[released_block][1] = 'c'     #Set the block clear.
 
-                move.append(moving_block)
-                move.append(released_block)
+                move.append(moving_block)     #Add the 'moving_block' to 'move' list.
+                move.append(released_block)      #Add the 'released_block' to 'move' list.
                 move.append('table')
 
-                distance = self.distance + 1
+                distance = self.distance + 1     #The distance of the child is the distance of the parent plus 1.
 
-                children.append(State(layout = temp, parent = self, move = move, distance = distance))
+                children.append(State(layout = temp, parent = self, move = move, distance = distance))     #Add to 'children' list a new State object.
         
-        return children
+        return children     #Return the children list.
